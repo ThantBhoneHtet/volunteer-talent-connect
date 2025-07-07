@@ -17,20 +17,23 @@ export const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#skills" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Browse Skills
+              Skills Bank
             </a>
             <a href="#volunteers" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Find Volunteers
+              Our Volunteers
             </a>
             <a href="#organizations" className="text-gray-700 hover:text-blue-600 transition-colors">
-              For Organizations
+              Partner Organizations
+            </a>
+            <a href="#forum" className="text-gray-700 hover:text-blue-600 transition-colors">
+             Forum
             </a>
             <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-              Sign In
+              Login
             </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              Join as Volunteer
-            </Button>
+            {/* <Button className="bg-blue-600 hover:bg-blue-700">
+              Login
+            </Button> */}
           </div>
 
           <div className="md:hidden">
