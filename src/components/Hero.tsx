@@ -6,30 +6,45 @@ export const Hero = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Connect Your Skills
-            <span className="text-blue-600 block">With Meaningful Causes</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of skilled volunteers making a difference. Share your expertise, 
-            learn new skills, and contribute to organizations that matter to you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 group"
-            >
-              Get Started as Volunteer
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 text-lg px-8 py-4"
-            >
-              Find Volunteers
-            </Button>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Connect Your Skills
+              <span className="text-blue-600 block">With Meaningful Causes</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+              Join thousands of skilled volunteers making a difference. Share your expertise, 
+              learn new skills, and contribute to organizations that matter to you.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button 
+                size="lg" 
+                className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 group"
+              >
+                Get Started as Volunteer
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 text-lg px-8 py-4"
+              >
+                Find Volunteers
+              </Button>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                alt="Volunteers working together on community projects"
+                className="w-full h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+            </div>
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-blue-100 rounded-full opacity-60"></div>
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-green-100 rounded-full opacity-60"></div>
           </div>
         </div>
 
