@@ -22,7 +22,6 @@ export const VolunteerRegister = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg mx-auto mb-4"></div>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Get started</h2>
             <p className="text-gray-500">Create your volunteer account now</p>
           </div>
