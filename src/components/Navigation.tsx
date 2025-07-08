@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X, Heart, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export const Navigation = () => {
@@ -31,9 +31,10 @@ export const Navigation = () => {
             <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
               Login
             </Button>
-            {/* <Button className="bg-blue-600 hover:bg-blue-700">
-              Login
-            </Button> */}
+            <Button className="bg-blue-600 hover:bg-blue-700" >
+              Register
+              <ChevronDown/>
+            </Button>
           </div>
 
           <div className="md:hidden">
@@ -64,6 +65,7 @@ export const Navigation = () => {
               </Button>
               <Button className="bg-blue-600 hover:bg-blue-700">
                 Join as Volunteer
+                
               </Button>
             </div>
           </div>
