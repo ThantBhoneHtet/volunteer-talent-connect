@@ -11,6 +11,7 @@ import {
   User, 
   LogOut,
   Home,
+  Menu,
   CalendarDays,
   FolderOpen,
   UserCheck,
@@ -30,6 +31,7 @@ import {
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Link } from 'react-router-dom';
 
 type SidebarOption = 'dashboard' | 'scheduled-tasks' | 'programs' | 'notifications' | 'messages' | 'colleagues' | 'admin' | 'settings';
 
@@ -299,12 +301,15 @@ export const VolunteerDashboard = () => {
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
       <div className={`bg-slate-900 text-white transition-all duration-300 ${
-        isSidebarCollapsed ? 'w-16' : 'w-64'
+        isSidebarCollapsed ? 'w-18' : 'w-64'
       }`}>
         <div className="p-4">
           <div className="flex items-center justify-between mb-8">
             {!isSidebarCollapsed && (
-              <h1 className="text-xl font-bold text-orange-500">Help4All</h1>
+              <Link to="/" className="flex items-center space-x-2">
+                <Heart className="h-8 w-8 text-blue-600" />
+                <span className="text-2xl text-white font-bold text-gray-900">SkillBridge</span>
+              </Link>
             )}
             <Button
               variant="ghost"
@@ -312,7 +317,7 @@ export const VolunteerDashboard = () => {
               onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
               className="text-white hover:bg-slate-800"
             >
-              <Home className="h-5 w-5" />
+              <Menu className="h-5 w-5 text-white" />
             </Button>
           </div>
           

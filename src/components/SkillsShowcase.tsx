@@ -13,6 +13,7 @@ import {
   Mic,
   Wrench 
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 const skillCategories = [
   {
@@ -106,6 +107,11 @@ export const SkillsShowcase = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+            View All Skills
+          </Button>
         </div>
       </div>
     </section>
