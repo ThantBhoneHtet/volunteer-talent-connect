@@ -2,9 +2,17 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const VolunteerRegister = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, you would handle registration here
+    navigate('/volunteer/dashboard');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex">
       {/* Left side - Illustration */}
@@ -26,7 +34,7 @@ export const VolunteerRegister = () => {
             <p className="text-gray-500">Create your volunteer account now</p>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
                 Full name
@@ -66,7 +74,7 @@ export const VolunteerRegister = () => {
               </div>
             </div>
 
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium">
+            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium">
               Sign Up
             </Button>
           </form>
