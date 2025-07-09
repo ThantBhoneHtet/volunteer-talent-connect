@@ -33,6 +33,15 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Link } from 'react-router-dom';
 
+// Import dashboard components
+import ScheduledTasks from '@/components/dashboard/ScheduledTasks';
+import Programs from '@/components/dashboard/Programs';
+import Messages from '@/components/dashboard/Messages';
+import Notifications from '@/components/dashboard/Notifications';
+import ColleaguesTeams from '@/components/dashboard/ColleaguesTeams';
+import AdminTeam from '@/components/dashboard/AdminTeam';
+import SettingsComponent from '@/components/dashboard/Settings';
+
 type SidebarOption = 'dashboard' | 'scheduled-tasks' | 'programs' | 'notifications' | 'messages' | 'colleagues' | 'admin' | 'settings';
 
 export const VolunteerDashboard = () => {
@@ -147,50 +156,52 @@ export const VolunteerDashboard = () => {
         </Card>
       </div>
 
-      {/* Upcoming Tasks */}
+      {/* Upcoming Tasks - Smaller Cards */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-gray-900">Your Upcoming Volunteer Opportunities</h3>
-          <Button variant="ghost" className="text-orange-600 hover:text-orange-700">
+          <Button 
+            variant="ghost" 
+            className="text-orange-600 hover:text-orange-700"
+            onClick={() => setActiveSection('scheduled-tasks')}
+          >
             View All <Eye className="ml-1 h-4 w-4" />
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-3">
           {upcomingTasks.map((task) => (
-            <Card key={task.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative">
-                <img 
-                  src={task.image} 
-                  alt={task.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    Upcoming
-                  </span>
-                </div>
-                <button className="absolute top-4 right-4 bg-white/80 hover:bg-white p-2 rounded-full">
-                  <Heart className="h-5 w-5 text-gray-600" />
-                </button>
-              </div>
+            <Card key={task.id} className="hover:shadow-md transition-shadow">
               <CardContent className="p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">{task.title}</h4>
-                <div className="flex items-center text-sm text-gray-600 mb-2">
-                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
-                    {task.category}
-                  </span>
-                </div>
-                <div className="flex items-center text-sm text-gray-600 mb-2">
-                  <CalendarDays className="h-4 w-4 mr-2" />
-                  {task.date}
-                </div>
-                <div className="flex items-center text-sm text-gray-600 mb-3">
-                  <Clock className="h-4 w-4 mr-2" />
-                  {task.time}
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-6 h-6 bg-gray-300 rounded-full mr-2"></div>
-                  {task.organization}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <img 
+                      src={task.image} 
+                      alt={task.title}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">{task.title}</h4>
+                      <div className="flex items-center gap-3 text-sm text-gray-500">
+                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+                          {task.category}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          <CalendarDays className="h-4 w-4" />
+                          {task.date}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          {task.time}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button variant="ghost" size="icon">
+                      <Heart className="h-4 w-4" />
+                    </Button>
+                    <Button size="sm">View Details</Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -198,45 +209,52 @@ export const VolunteerDashboard = () => {
         </div>
       </div>
 
-      {/* Recommended Tasks */}
+      {/* Recommended Tasks - Smaller Cards */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-gray-900">Volunteer Opportunities You Might Be Interested In</h3>
-          <Button variant="ghost" className="text-orange-600 hover:text-orange-700">
+          <Button 
+            variant="ghost" 
+            className="text-orange-600 hover:text-orange-700"
+            onClick={() => setActiveSection('programs')}
+          >
             View All <Eye className="ml-1 h-4 w-4" />
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-3">
           {recommendedTasks.map((task) => (
-            <Card key={task.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative">
-                <img 
-                  src={task.image} 
-                  alt={task.title}
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute top-4 right-4 bg-white/80 hover:bg-white p-2 rounded-full">
-                  <Heart className="h-5 w-5 text-gray-600" />
-                </button>
-              </div>
+            <Card key={task.id} className="hover:shadow-md transition-shadow">
               <CardContent className="p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">{task.title}</h4>
-                <div className="flex items-center text-sm text-gray-600 mb-2">
-                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
-                    {task.category}
-                  </span>
-                </div>
-                <div className="flex items-center text-sm text-gray-600 mb-2">
-                  <CalendarDays className="h-4 w-4 mr-2" />
-                  {task.date}
-                </div>
-                <div className="flex items-center text-sm text-gray-600 mb-3">
-                  <Clock className="h-4 w-4 mr-2" />
-                  {task.time}
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-6 h-6 bg-gray-300 rounded-full mr-2"></div>
-                  {task.organization}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <img 
+                      src={task.image} 
+                      alt={task.title}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">{task.title}</h4>
+                      <div className="flex items-center gap-3 text-sm text-gray-500">
+                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+                          {task.category}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          <CalendarDays className="h-4 w-4" />
+                          {task.date}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          {task.time}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button variant="ghost" size="icon">
+                      <Heart className="h-4 w-4" />
+                    </Button>
+                    <Button size="sm">Apply</Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -270,31 +288,27 @@ export const VolunteerDashboard = () => {
     </div>
   );
 
-  const renderOtherSections = () => {
-    const sectionTitles = {
-      'scheduled-tasks': 'Scheduled Tasks',
-      'programs': 'Programs',
-      'notifications': 'Notifications',
-      'messages': 'Messages',
-      'colleagues': 'Colleagues/Teams',
-      'admin': 'Admin Team',
-      'settings': 'Settings'
-    };
-
-    return (
-      <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-gray-900">
-          {sectionTitles[activeSection]}
-        </h2>
-        <Card>
-          <CardContent className="p-8 text-center">
-            <p className="text-gray-600">
-              {sectionTitles[activeSection]} section coming soon...
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    );
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'dashboard':
+        return renderDashboard();
+      case 'scheduled-tasks':
+        return <ScheduledTasks />;
+      case 'programs':
+        return <Programs />;
+      case 'messages':
+        return <Messages />;
+      case 'notifications':
+        return <Notifications />;
+      case 'colleagues':
+        return <ColleaguesTeams />;
+      case 'admin':
+        return <AdminTeam />;
+      case 'settings':
+        return <SettingsComponent />;
+      default:
+        return renderDashboard();
+    }
   };
 
   return (
@@ -308,7 +322,7 @@ export const VolunteerDashboard = () => {
             {!isSidebarCollapsed && (
               <Link to="/" className="flex items-center space-x-2">
                 <Heart className="h-8 w-8 text-blue-600" />
-                <span className="text-2xl text-white font-bold text-gray-900">SkillBridge</span>
+                <span className="text-2xl text-white font-bold">SkillBridge</span>
               </Link>
             )}
             <Button
@@ -367,7 +381,7 @@ export const VolunteerDashboard = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setActiveSection('settings')}>
                   <User className="mr-2 h-4 w-4" />
                   Profile
                 </DropdownMenuItem>
@@ -382,7 +396,7 @@ export const VolunteerDashboard = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 p-6 overflow-auto">
-          {activeSection === 'dashboard' ? renderDashboard() : renderOtherSections()}
+          {renderContent()}
         </main>
       </div>
     </div>
