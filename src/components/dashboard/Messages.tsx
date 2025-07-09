@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Search, Mic, Send, Paperclip, MoreVertical } from 'lucide-react';
+import { Search, Image, Send, Paperclip, MoreVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -185,6 +185,9 @@ const Messages = () => {
             <Button variant="ghost" size="icon">
               <Paperclip className="h-5 w-5" />
             </Button>
+            <Button variant="ghost" size="icon">
+              <Image className="h-5 w-5" />
+            </Button>
             <div className="flex-1">
               <Input
                 placeholder="Type a message..."
@@ -193,9 +196,6 @@ const Messages = () => {
                 className="border-0 bg-gray-100 focus:bg-white"
               />
             </div>
-            <Button variant="ghost" size="icon">
-              <Mic className="h-5 w-5" />
-            </Button>
             <Button size="icon">
               <Send className="h-4 w-4" />
             </Button>

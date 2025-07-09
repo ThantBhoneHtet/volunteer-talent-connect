@@ -49,12 +49,25 @@ export const VolunteerDashboard = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
 
+  const unreadNotifications = 3; // Mock unread count
+  const unreadMessages = 2; // Mock unread count
+
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Home },
     { id: 'scheduled-tasks', label: 'Scheduled Tasks', icon: CalendarDays },
     { id: 'programs', label: 'Programs', icon: FolderOpen },
-    { id: 'notifications', label: 'Notifications', icon: Bell },
-    { id: 'messages', label: 'Messages', icon: MessageSquare },
+    { 
+      id: 'notifications', 
+      label: 'Notifications', 
+      icon: Bell, 
+      badge: unreadNotifications > 0 ? unreadNotifications : null 
+    },
+    { 
+      id: 'messages', 
+      label: 'Messages', 
+      icon: MessageSquare, 
+      badge: unreadMessages > 0 ? unreadMessages : null 
+    },
     { id: 'colleagues', label: 'Colleagues/Teams', icon: Users },
     { id: 'admin', label: 'Admin Team', icon: Shield },
     { id: 'settings', label: 'Settings', icon: Settings },
@@ -344,7 +357,7 @@ export const VolunteerDashboard = () => {
                 <button
                   key={item.id}
                   onClick={() => setActiveSection(item.id as SidebarOption)}
-                  className={`w-full flex items-center px-3 py-2 rounded-lg transition-colors ${
+                  className={`w-full flex items-center px-3 py-2 rounded-lg transition-colors relative ${
                     isActive 
                       ? 'bg-orange-600 text-white' 
                       : 'text-gray-300 hover:bg-slate-800 hover:text-white'
@@ -352,7 +365,17 @@ export const VolunteerDashboard = () => {
                 >
                   <Icon className="h-5 w-5" />
                   {!isSidebarCollapsed && (
-                    <span className="ml-3 text-sm">{item.label}</span>
+                    <>
+                      <span className="ml-3 text-sm">{item.label}</span>
+                      {item.badge && (
+                        <span className="ml-auto bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                          {item.badge}
+                        </span>
+                      )}
+                    </>
+                  )}
+                  {isSidebarCollapsed && item.badge && (
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
                   )}
                 </button>
               );

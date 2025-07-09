@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { User, Mail, Lock, Bell, Shield, Palette, Globe, HelpCircle } from 'lucide-react';
+import { User, Mail, Lock, Bell, Shield, Palette, Globe, HelpCircle, Plus, X, Award, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
 
 const Settings = () => {
   const [profileData, setProfileData] = useState({
@@ -18,6 +18,15 @@ const Settings = () => {
     bio: 'Passionate volunteer dedicated to making a positive impact in the community through environmental and social initiatives.',
     location: 'San Francisco, CA'
   });
+
+  const [skills, setSkills] = useState(['Environmental Conservation', 'Community Outreach', 'Event Planning']);
+  const [newSkill, setNewSkill] = useState('');
+  
+  const [certificates, setCertificates] = useState([
+    { id: 1, name: 'First Aid Certification', issuer: 'Red Cross', year: '2023' },
+    { id: 2, name: 'Project Management', issuer: 'PMI', year: '2022' }
+  ]);
+  const [newCertificate, setNewCertificate] = useState({ name: '', issuer: '', year: '' });
 
   const [notifications, setNotifications] = useState({
     emailNotifications: true,
@@ -32,6 +41,31 @@ const Settings = () => {
     activityStatus: true,
     volunteerHours: false
   });
+
+  const addSkill = () => {
+    if (newSkill.trim() && !skills.includes(newSkill.trim())) {
+      setSkills([...skills, newSkill.trim()]);
+      setNewSkill('');
+    }
+  };
+
+  const removeSkill = (skillToRemove: string) => {
+    setSkills(skills.filter(skill => skill !== skillToRemove));
+  };
+
+  const addCertificate = () => {
+    if (newCertificate.name.trim() && newCertificate.issuer.trim()) {
+      setCertificates([...certificates, {
+        id: Date.now(),
+        ...newCertificate
+      }]);
+      setNewCertificate({ name: '', issuer: '', year: '' });
+    }
+  };
+
+  const removeCertificate = (id: number) => {
+    setCertificates(certificates.filter(cert => cert.id !== id));
+  };
 
   return (
     <div className="space-y-6">
@@ -113,6 +147,97 @@ const Settings = () => {
                 rows={3}
               />
             </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Skills Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-5 w-5" />
+            Skills & Expertise
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill, index) => (
+              <Badge key={index} variant="outline" className="flex items-center gap-1 bg-blue-50 text-blue-700">
+                {skill}
+                <button
+                  onClick={() => removeSkill(skill)}
+                  className="ml-1 hover:bg-blue-200 rounded-full p-0.5"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </Badge>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <Input
+              placeholder="Add a skill..."
+              value={newSkill}
+              onChange={(e) => setNewSkill(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && addSkill()}
+            />
+            <Button onClick={addSkill} size="icon">
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Certificates Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Award className="h-5 w-5" />
+            Certificates & Qualifications
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-3">
+            {certificates.map((cert) => (
+              <div key={cert.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-gray-900">{cert.name}</h4>
+                  <p className="text-sm text-gray-600">{cert.issuer} • {cert.year}</p>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => removeCertificate(cert.id)}
+                  className="text-red-600 hover:text-red-700"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            ))}
+          </div>
+          
+          <div className="space-y-3 p-4 border-2 border-dashed border-gray-200 rounded-lg">
+            <h4 className="font-medium text-gray-900">Add New Certificate</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <Input
+                placeholder="Certificate name"
+                value={newCertificate.name}
+                onChange={(e) => setNewCertificate({...newCertificate, name: e.target.value})}
+              />
+              <Input
+                placeholder="Issuing organization"
+                value={newCertificate.issuer}
+                onChange={(e) => setNewCertificate({...newCertificate, issuer: e.target.value})}
+              />
+              <Input
+                placeholder="Year"
+                value={newCertificate.year}
+                onChange={(e) => setNewCertificate({...newCertificate, year: e.target.value})}
+              />
+            </div>
+            <Button onClick={addCertificate} className="w-full">
+              <Plus className="h-4 w-4 mr-2" />
+              Add Certificate
+            </Button>
           </div>
         </CardContent>
       </Card>

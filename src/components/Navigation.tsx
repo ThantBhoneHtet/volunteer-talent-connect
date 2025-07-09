@@ -8,6 +8,22 @@ export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRegisterDropdownOpen, setIsRegisterDropdownOpen] = useState(false);
 
+  const handleRegisterMouseEnter = () => {
+    setIsRegisterDropdownOpen(true);
+  };
+
+  const handleRegisterMouseLeave = () => {
+    setIsRegisterDropdownOpen(false);
+  };
+
+  const handleDropdownMouseEnter = () => {
+    setIsRegisterDropdownOpen(true);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    setIsRegisterDropdownOpen(false);
+  };
+
   return (
     <nav className="bg-white/90 backdrop-blur-sm border-b border-blue-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,30 +53,33 @@ export const Navigation = () => {
             </Link>
             <div className="relative">
               <Button 
-                className="bg-blue-600 hover:bg-blue-700" 
-                onMouseEnter={() => setIsRegisterDropdownOpen(true)}
-                onMouseLeave={() => setIsRegisterDropdownOpen(false)}
+                className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2" 
+                onMouseEnter={handleRegisterMouseEnter}
+                onMouseLeave={handleRegisterMouseLeave}
               >
                 Register
-                <ChevronDown className="ml-1 h-4 w-4" />
+                <ChevronDown className="h-4 w-4" />
               </Button>
               {isRegisterDropdownOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
-                  onMouseEnter={() => setIsRegisterDropdownOpen(true)}
-                  onMouseLeave={() => setIsRegisterDropdownOpen(false)}
+                  className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60] overflow-hidden"
+                  onMouseEnter={handleDropdownMouseEnter}
+                  onMouseLeave={handleDropdownMouseLeave}
                 >
                   <Link 
                     to="/register/volunteer" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                   >
-                    For Volunteer
+                    <div className="font-medium">For Volunteer</div>
+                    <div className="text-sm text-gray-500">Join as a volunteer</div>
                   </Link>
+                  <div className="border-t border-gray-100"></div>
                   <Link 
                     to="/register/organization" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                    className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                   >
-                    For Organization
+                    <div className="font-medium">For Organization</div>
+                    <div className="text-sm text-gray-500">Register your organization</div>
                   </Link>
                 </div>
               )}
