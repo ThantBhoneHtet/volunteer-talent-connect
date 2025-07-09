@@ -38,22 +38,19 @@ export const Navigation = () => {
             <a href="#forum" className="text-gray-700 hover:text-blue-600 transition-colors">
              Forum
             </a>
-            <Link to="/login">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                Login
-              </Button>
-            </Link>
             <div 
               className="relative"
               onMouseEnter={handleRegisterDropdownEnter}
-              onMouseLeave={handleRegisterDropdownLeave}
+              
             >
-              <Button className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+              <Button className="bg-white border border-blue-600 text-blue-600 hover:bg-white flex items-center gap-2">
                 Register
                 <ChevronDown className="h-4 w-4" />
               </Button>
               {isRegisterDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60]">
+                <div 
+                  onMouseLeave={handleRegisterDropdownLeave}
+                  className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60]">
                   <Link 
                     to="/register/volunteer" 
                     className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
@@ -72,6 +69,12 @@ export const Navigation = () => {
                 </div>
               )}
             </div>
+            <Link to="/login">
+              <Button variant="outline" className="bg-blue-600 border-blue-600 text-white hover:text-white hover:bg-blue-700">
+                Login
+              </Button>
+            </Link>
+            
           </div>
 
           <div className="md:hidden">
