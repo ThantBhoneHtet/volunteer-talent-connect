@@ -8,19 +8,11 @@ export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRegisterDropdownOpen, setIsRegisterDropdownOpen] = useState(false);
 
-  const handleRegisterMouseEnter = () => {
+  const handleRegisterDropdownEnter = () => {
     setIsRegisterDropdownOpen(true);
   };
 
-  const handleRegisterMouseLeave = () => {
-    setIsRegisterDropdownOpen(false);
-  };
-
-  const handleDropdownMouseEnter = () => {
-    setIsRegisterDropdownOpen(true);
-  };
-
-  const handleDropdownMouseLeave = () => {
+  const handleRegisterDropdownLeave = () => {
     setIsRegisterDropdownOpen(false);
   };
 
@@ -51,21 +43,17 @@ export const Navigation = () => {
                 Login
               </Button>
             </Link>
-            <div className="relative">
-              <Button 
-                className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2" 
-                onMouseEnter={handleRegisterMouseEnter}
-                onMouseLeave={handleRegisterMouseLeave}
-              >
+            <div 
+              className="relative"
+              onMouseEnter={handleRegisterDropdownEnter}
+              onMouseLeave={handleRegisterDropdownLeave}
+            >
+              <Button className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
                 Register
                 <ChevronDown className="h-4 w-4" />
               </Button>
               {isRegisterDropdownOpen && (
-                <div 
-                  className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60] overflow-hidden"
-                  onMouseEnter={handleDropdownMouseEnter}
-                  onMouseLeave={handleDropdownMouseLeave}
-                >
+                <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[60]">
                   <Link 
                     to="/register/volunteer" 
                     className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"

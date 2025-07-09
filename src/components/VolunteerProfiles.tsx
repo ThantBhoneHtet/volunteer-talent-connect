@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { MapPin, Star, Clock } from "lucide-react";
+import { MapPin, Star, Clock, MessageCircle, Award } from "lucide-react";
 
 const volunteers = [
   {
@@ -91,69 +91,95 @@ export const VolunteerProfiles = () => {
           {volunteers.map((volunteer, index) => (
             <Card 
               key={volunteer.name}
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 bg-white/80 backdrop-blur-sm"
+              className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden"
             >
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4 mb-4">
-                  <Avatar className="w-16 h-16">
-                    <AvatarFallback className="bg-blue-100 text-blue-600 font-semibold text-lg">
-                      {volunteer.avatar}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                      {volunteer.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-1">{volunteer.title}</p>
-                    <div className="flex items-center text-xs text-gray-500 space-x-3">
-                      <div className="flex items-center">
-                        <MapPin className="h-3 w-3 mr-1" />
-                        {volunteer.location}
-                      </div>
-                      <div className="flex items-center">
-                        <Star className="h-3 w-3 mr-1 text-yellow-500" />
-                        {volunteer.rating}
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="h-3 w-3 mr-1" />
-                        {volunteer.hours}h
+              <CardContent className="p-0">
+                {/* Header with gradient background */}
+                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6 text-white relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -mr-10 -mt-10"></div>
+                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/5 rounded-full -ml-8 -mb-8"></div>
+                  
+                  <div className="flex items-start justify-between relative z-10">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="w-12 h-12 border-2 border-white/20">
+                        <AvatarFallback className="bg-white/10 text-white font-semibold backdrop-blur-sm">
+                          {volunteer.avatar}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h3 className="font-bold text-lg">{volunteer.name}</h3>
+                        <p className="text-sm text-white/80">{volunteer.title}</p>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <div className={`w-3 h-3 rounded-full ${volunteer.available ? 'bg-green-500' : 'bg-gray-400'}`} />
+                    <div className={`w-3 h-3 rounded-full ${volunteer.available ? 'bg-green-400' : 'bg-gray-400'} shadow-lg`}></div>
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                  {volunteer.bio}
-                </p>
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-500 space-x-4 mb-4">
+                    <div className="flex items-center">
+                      <MapPin className="h-4 w-4 mr-1 text-gray-400" />
+                      {volunteer.location}
+                    </div>
+                    <div className="flex items-center">
+                      <Star className="h-4 w-4 mr-1 text-amber-500" fill="currentColor" />
+                      <span className="font-medium text-gray-700">{volunteer.rating}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="h-4 w-4 mr-1 text-gray-400" />
+                      <span className="font-medium text-gray-700">{volunteer.hours}h</span>
+                    </div>
+                  </div>
 
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {volunteer.skills.map((skill) => (
-                    <Badge 
-                      key={skill} 
-                      variant="secondary" 
-                      className="text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {volunteer.bio}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {volunteer.skills.map((skill) => (
+                      <Badge 
+                        key={skill} 
+                        variant="secondary" 
+                        className="text-xs bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 hover:from-slate-200 hover:to-slate-300 transition-all duration-200 border border-slate-200"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button 
+                      className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+                      disabled={!volunteer.available}
                     >
-                      {skill}
-                    </Badge>
-                  ))}
+                      {volunteer.available ? (
+                        <>
+                          <MessageCircle className="w-4 h-4 mr-2" />
+                          Connect
+                        </>
+                      ) : "Unavailable"}
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="icon"
+                      className="border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-colors"
+                    >
+                      <Award className="w-4 h-4 text-gray-600" />
+                    </Button>
+                  </div>
                 </div>
-
-                <Button 
-                  className="w-full bg-blue-600 hover:bg-blue-700 transition-colors"
-                  disabled={!volunteer.available}
-                >
-                  {volunteer.available ? "Connect" : "Unavailable"}
-                </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50 hover:border-indigo-300 transition-all duration-200"
+          >
             View All Volunteers
           </Button>
         </div>
