@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -15,6 +16,11 @@ export const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex">
+      <Link to="/">
+        <Button className="bg-white m-5 border border-black text-dark hover:bg-white">
+        <ArrowLeft className="h-6 w-6" />
+      </Button>
+      </Link>
       {/* Left side - Illustration */}
       <div className="hidden lg:flex lg:w-1/2 items-center justify-center p-12">
         <div className="max-w-md">
