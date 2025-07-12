@@ -1,9 +1,9 @@
 # Welcome to your Lovable project
 
-## Project info
+<!-- '## Project info
 
-**URL**: https://lovable.dev/projects/93447810-2ca6-4fcc-986d-0ec786d56b29
-
+**URL**: https://lovable.dev/projects/93447810-2ca6-4fcc-986d-0ec786d56b29 -->
+'
 ## How can I edit this code?
 
 There are several ways of editing your application.
