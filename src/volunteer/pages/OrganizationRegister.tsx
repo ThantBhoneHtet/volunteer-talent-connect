@@ -6,13 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react"
 
 export const OrganizationRegister = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real app, you would handle registration here
-    navigate('/organization');
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // In a real app, you would handle registration here
+  //   navigate('/organization');
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex">
@@ -40,7 +40,9 @@ export const OrganizationRegister = () => {
             <p className="text-gray-500">Create your organization account now</p>
           </div>
 
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" 
+          // onSubmit={handleSubmit}
+          >
             <div>
               <Label htmlFor="orgName" className="text-sm font-medium text-gray-700">
                 Organization name

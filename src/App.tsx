@@ -25,8 +25,8 @@ import VolunteerNotFound from "@/volunteer/pages/NotFound";
 import Admin from "@/volunteer/pages/Admin";
 
 // ----- Organization -----
-import {OrganizationLayout}  from "@/organization/components/OrganizationLayout";
-import HiveDashboard from "@/organization/pages/Dashboard";
+import { OrganizationLayout } from "@/organization/components/OrganizationLayout";
+import Dashboard from "@/organization/pages/Dashboard";
 import AddRequest from "@/organization/pages/AddRequest";
 import ManagePosts from "@/organization/pages/ManagePosts";
 import Notifications from "@/organization/pages/Notifications";
@@ -53,29 +53,42 @@ const App = () => (
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />} />
           </Route>
-          <Route path="/admin/welcome" element={
-            <div className="min-h-screen flex items-center justify-center bg-gray-50">
-              <div className="text-center">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to VSB Admin</h1>
-                <p className="text-gray-600 mb-6">Volunteer Skill Bank Administration Portal</p>
-                <a href="/admin" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                  Go to Admin Dashboard
-                </a>
+          <Route
+            path="/admin/welcome"
+            element={
+              <div className="min-h-screen flex items-center justify-center bg-gray-50">
+                <div className="text-center">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                    Welcome to VSB Admin
+                  </h1>
+                  <p className="text-gray-600 mb-6">
+                    Volunteer Skill Bank Administration Portal
+                  </p>
+                  <a
+                    href="/admin"
+                    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Go to Admin Dashboard
+                  </a>
+                </div>
               </div>
-            </div>
-          } />
+            }
+          />
 
-          {/* ----- Volunteer Talent Connect Routes ----- */}
+          {/* ----- Volunteer ----- */}
           <Route path="/" element={<Index />} />
           <Route path="/register/volunteer" element={<VolunteerRegister />} />
-          <Route path="/register/organization" element={<OrganizationRegister />} />
+          <Route
+            path="/register/organization"
+            element={<OrganizationRegister />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/admin-panel" element={<Admin />} />
           <Route path="/volunteer/dashboard" element={<VolunteerDashboard />} />
 
-          {/* ----- Volunteer Hive Hub Routes ----- */}
+          {/* ----- Organizaion ----- */}
           <Route path="/organization" element={<OrganizationLayout />}>
-            <Route index element={<HiveDashboard />} />
+            <Route index element={<Dashboard />} />
             <Route path="add-request" element={<AddRequest />} />
             <Route path="manage-posts" element={<ManagePosts />} />
             <Route path="notifications" element={<Notifications />} />
@@ -85,7 +98,14 @@ const App = () => (
           </Route>
 
           {/* ----- Global Fallback Route ----- */}
-          <Route path="*" element={<div className="p-10 text-center text-xl font-semibold text-red-500">404 — Page Not Found</div>} />
+          <Route
+            path="*"
+            element={
+              <div className="p-10 text-center text-xl font-semibold text-red-500">
+                404 — Page Not Found
+              </div>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

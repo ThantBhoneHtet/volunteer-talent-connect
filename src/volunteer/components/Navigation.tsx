@@ -79,6 +79,11 @@ export const Navigation = () => {
                 Admin
               </Button>
             </Link>
+            <Link to="/organization">
+              <Button variant="outline" className="bg-blue-600 border-blue-600 text-white hover:text-white hover:bg-blue-700">
+                Organization
+              </Button>
+            </Link>
           </div>
 
           <div className="md:hidden">

@@ -21,12 +21,12 @@ import {
 } from "@/shared/components/ui/sidebar";
 
 const menuItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Add Request", url: "/add-request", icon: Plus },
-  { title: "Manage Posts", url: "/manage-posts", icon: FileText },
-  { title: "Notifications", url: "/notifications", icon: Bell },
-  { title: "Messages", url: "/messages", icon: MessageSquare },
-  { title: "Profile Settings", url: "/profile", icon: Settings },
+  { title: "Dashboard", url: "/organization/", icon: LayoutDashboard },
+  { title: "Add Request", url: "/organization/add-request", icon: Plus },
+  { title: "Manage Posts", url: "/organization/manage-posts", icon: FileText },
+  { title: "Notifications", url: "/organization/notifications", icon: Bell },
+  { title: "Messages", url: "/organization/messages", icon: MessageSquare },
+  { title: "Profile Settings", url: "/organization/profile", icon: Settings },
 ];
 
 export function AppSidebar() {
