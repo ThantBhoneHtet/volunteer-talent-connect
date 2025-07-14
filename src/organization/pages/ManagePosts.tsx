@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
@@ -107,6 +108,8 @@ const ManagePosts = () => {
     return matchesSearch && matchesStatus;
   });
 
+ const navigate = useNavigate();
+
   return (
     <div className="p-6 animate-fade-in">
       <div className="mb-8">
@@ -120,7 +123,7 @@ const ManagePosts = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <Card className="card-gradient hover-lift animate-scale-in">
+        <Card className="card-gradient hover:shadow-lg transition-shadow">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -132,7 +135,7 @@ const ManagePosts = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-gradient hover-lift animate-scale-in" style={{ animationDelay: "0.1s" }}>
+        <Card className="card-gradient hover:shadow-lg transition-shadow" style={{ animationDelay: "0.1s" }}>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -146,7 +149,7 @@ const ManagePosts = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-gradient hover-lift animate-scale-in" style={{ animationDelay: "0.2s" }}>
+        <Card className="card-gradient hover:shadow-lg transition-shadow" style={{ animationDelay: "0.2s" }}>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -160,7 +163,7 @@ const ManagePosts = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-gradient hover-lift animate-scale-in" style={{ animationDelay: "0.3s" }}>
+        <Card className="card-gradient hover:shadow-lg transition-shadow" style={{ animationDelay: "0.3s" }}>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -205,7 +208,7 @@ const ManagePosts = () => {
               </Select>
             </div>
             
-            <Button className="gap-2">
+            <Button onClick={() => navigate("/organization/add-request")} className="gap-2">
               <Plus className="w-4 h-4" />
               New Post
             </Button>

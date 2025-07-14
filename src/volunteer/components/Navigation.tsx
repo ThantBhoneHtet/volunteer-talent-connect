@@ -29,14 +29,8 @@ export const Navigation = () => {
             <a href="#skills" className="text-gray-700 hover:text-blue-600 transition-colors">
               Skills Bank
             </a>
-            <a href="#volunteers" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Our Volunteers
-            </a>
             <a href="#organizations" className="text-gray-700 hover:text-blue-600 transition-colors">
               Partner Organizations
-            </a>
-            <a href="#forum" className="text-gray-700 hover:text-blue-600 transition-colors">
-             Forum
             </a>
             <div 
               className="relative"

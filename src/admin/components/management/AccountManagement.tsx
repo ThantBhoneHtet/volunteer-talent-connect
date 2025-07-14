@@ -5,11 +5,11 @@ import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
 import { Badge } from '@/shared/components/ui/badge';
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
 } from '@/shared/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '@/shared/components/ui/avatar';
 
@@ -44,6 +44,36 @@ const mockUsers = [
     posts: 3,
     warnings: 3
   },
+  {
+    id: 3,
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    type: 'requestor',
+    status: 'banned',
+    joinDate: '2024-02-20',
+    posts: 3,
+    warnings: 3
+  },
+  {
+    id: 3,
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    type: 'requestor',
+    status: 'banned',
+    joinDate: '2024-02-20',
+    posts: 3,
+    warnings: 3
+  },
+  {
+    id: 3,
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    type: 'requestor',
+    status: 'banned',
+    joinDate: '2024-02-20',
+    posts: 3,
+    warnings: 3
+  },
 ];
 
 export const AccountManagement = () => {
@@ -53,7 +83,7 @@ export const AccountManagement = () => {
 
   const filteredUsers = mockUsers.filter(user => {
     const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.email.toLowerCase().includes(searchTerm.toLowerCase());
+      user.email.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesType = filterType === 'all' || user.type === filterType;
     const matchesStatus = filterStatus === 'all' || user.status === filterStatus;
     return matchesSearch && matchesType && matchesStatus;
@@ -84,7 +114,6 @@ export const AccountManagement = () => {
           <h1 className="text-3xl font-bold text-foreground">Account Management</h1>
           <p className="text-muted-foreground mt-2">Manage all user accounts and permissions</p>
         </div>
-        <Button className="animate-button-hover">Add New User</Button>
       </div>
 
       <Card className="animate-card-hover">
@@ -102,7 +131,7 @@ export const AccountManagement = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
-              <select 
+              <select
                 className="px-3 py-2 border rounded-lg text-sm"
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
@@ -112,7 +141,7 @@ export const AccountManagement = () => {
                 <option value="organization">Organizations</option>
                 <option value="requestor">Requestors</option>
               </select>
-              <select 
+              <select
                 className="px-3 py-2 border rounded-lg text-sm"
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
@@ -126,7 +155,7 @@ export const AccountManagement = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
+          <div className="max-h-[400px] overflow-y-auto overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
@@ -141,7 +170,10 @@ export const AccountManagement = () => {
               </thead>
               <tbody>
                 {filteredUsers.map((user, index) => (
-                  <tr key={user.id} className={`border-b border-border hover:bg-muted/50 transition-colors duration-200 animate-fade-in-up animate-stagger-${Math.min(index + 1, 4)}`}>
+                  <tr
+                    key={user.id}
+                    className={`border-b border-border hover:bg-muted/50 transition-colors duration-200 animate-fade-in-up animate-stagger-${Math.min(index + 1, 4)}`}
+                  >
                     <td className="py-4 px-4">
                       <div className="flex items-center space-x-3">
                         <Avatar>
@@ -205,6 +237,7 @@ export const AccountManagement = () => {
             </table>
           </div>
         </CardContent>
+
       </Card>
     </div>
   );

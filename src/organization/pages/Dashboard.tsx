@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
@@ -27,6 +28,8 @@ const Dashboard = () => {
     { id: 4, title: "Social Media Management", volunteers: 2, status: "Draft", urgency: "High" },
   ];
 
+ const navigate = useNavigate();
+
   return (
     <div className="p-6 animate-fade-in">
       {/* Welcome Section */}
@@ -44,7 +47,7 @@ const Dashboard = () => {
         {stats.map((stat, index) => (
           <Card 
             key={stat.title} 
-            className="card-gradient hover-lift animate-scale-in"
+            className="card-gradient hover:shadow-lg transition-shadow"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <CardContent className="p-6">
@@ -73,7 +76,7 @@ const Dashboard = () => {
         <Card className="lg:col-span-2 card-gradient animate-slide-up" style={{ animationDelay: "0.4s" }}>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-lg font-semibold">Recent Requests</CardTitle>
-            <Button size="sm" className="gap-2">
+            <Button onClick={() => navigate("/organization/add-request")} size="sm" className="gap-2">
               <Plus className="w-4 h-4" />
               New Request
             </Button>
@@ -116,21 +119,17 @@ const Dashboard = () => {
             <CardTitle className="text-lg font-semibold">Quick Actions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Button className="w-full justify-start gap-3" variant="outline">
+            <Button onClick={() => navigate("/organization/add-request")} className="w-full justify-start gap-3" variant="outline">
               <Plus className="w-4 h-4" />
               Post New Request
             </Button>
-            <Button className="w-full justify-start gap-3" variant="outline">
+            <Button onClick={() => navigate("/organization/messages")} className="w-full justify-start gap-3" variant="outline">
               <MessageSquare className="w-4 h-4" />
               Message Volunteers
             </Button>
-            <Button className="w-full justify-start gap-3" variant="outline">
+            <Button onClick={() => navigate("/organization/manage-posts")} className="w-full justify-start gap-3" variant="outline">
               <Calendar className="w-4 h-4" />
-              Schedule Interview
-            </Button>
-            <Button className="w-full justify-start gap-3" variant="outline">
-              <FileText className="w-4 h-4" />
-              Generate Report
+              Management Posts
             </Button>
           </CardContent>
         </Card>

@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/shared/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
-import { Bell, Search, User } from "lucide-react";
+import { Bell, LogOut, Search, LogOutIcon } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { Outlet } from "react-router-dom";
@@ -37,7 +37,7 @@ export function OrganizationLayout() {
                 </span>
               </Button>
               <Button variant="ghost" size="icon">
-                <User className="w-5 h-5" />
+                <LogOutIcon className="w-5 h-5" />
               </Button>
             </div>
           </header>

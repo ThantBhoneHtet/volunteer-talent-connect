@@ -41,16 +41,6 @@ const Notifications = () => {
     },
     {
       id: 4,
-      type: 'recommendation',
-      icon: Star,
-      title: 'New Recommendation',
-      message: 'Based on your interests, we found a new Community Garden project',
-      time: '2 days ago',
-      read: true,
-      priority: 'normal'
-    },
-    {
-      id: 5,
       type: 'team',
       icon: Users,
       title: 'Team Update',
@@ -60,7 +50,7 @@ const Notifications = () => {
       priority: 'normal'
     },
     {
-      id: 6,
+      id: 5,
       type: 'system',
       icon: CheckCircle,
       title: 'Volunteer Hours Updated',
@@ -75,7 +65,6 @@ const Notifications = () => {
     const colors = {
       system: 'bg-blue-100 text-blue-800',
       organization: 'bg-green-100 text-green-800',
-      recommendation: 'bg-yellow-100 text-yellow-800',
       team: 'bg-purple-100 text-purple-800'
     };
     return colors[type as keyof typeof colors] || 'bg-gray-100 text-gray-800';
@@ -116,7 +105,6 @@ const Notifications = () => {
           { key: 'all', label: 'All' },
           { key: 'system', label: 'System' },
           { key: 'organization', label: 'Organizations' },
-          { key: 'recommendation', label: 'Recommendations' },
           { key: 'team', label: 'Teams' }
         ].map((tab) => (
           <button

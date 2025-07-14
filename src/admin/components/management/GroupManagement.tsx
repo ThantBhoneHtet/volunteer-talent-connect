@@ -64,25 +64,24 @@ export const GroupManagement = () => {
           <h1 className="text-3xl font-bold text-gray-900">Group Management</h1>
           <p className="text-gray-600 mt-2">Manage volunteer groups and organizations</p>
         </div>
-        <Button>Create New Group</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card>
+        <Card className='hover:shadow-lg transition-shadow'>
           <CardContent className="p-6">
             <div className="text-2xl font-bold text-blue-600">18</div>
             <p className="text-sm text-gray-600">Total Groups</p>
             <p className="text-xs text-gray-500 mt-1">+3 this month</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className='hover:shadow-lg transition-shadow'>
           <CardContent className="p-6">
             <div className="text-2xl font-bold text-green-600">234</div>
             <p className="text-sm text-gray-600">Total Members</p>
             <p className="text-xs text-gray-500 mt-1">+15 this week</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className='hover:shadow-lg transition-shadow'>
           <CardContent className="p-6">
             <div className="text-2xl font-bold text-purple-600">45</div>
             <p className="text-sm text-gray-600">Active Projects</p>

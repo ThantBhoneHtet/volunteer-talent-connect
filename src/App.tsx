@@ -52,6 +52,10 @@ const App = () => (
             <Route path="volunteers" element={<VolunteerManagement />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="/admin/management/volunteer" element={<VolunteerManagement />} />
+            <Route path="/admin/management/account" element={<AccountManagement/>}/>
+            <Route path="/admin/management/group" element={<GroupManagement/>}/>
+            <Route path="/admin/management/post" element={<PostManagement/>}/>
           </Route>
           <Route
             path="/admin/welcome"
@@ -95,6 +99,9 @@ const App = () => (
             <Route path="messages" element={<Messages />} />
             <Route path="profile" element={<Profile />} />
             <Route path="*" element={<HiveNotFound />} />
+            <Route path="/organization/add-request" element={<AddRequest />} />
+            <Route path="/organization/messages" element={<Messages />} />
+            <Route path="/organization/manage-posts" element={<ManagePosts />} />
           </Route>
 
           {/* ----- Global Fallback Route ----- */}

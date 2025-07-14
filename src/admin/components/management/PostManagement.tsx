@@ -70,7 +70,7 @@ export const PostManagement = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="p-6">
             <div className="text-2xl font-bold text-green-600">342</div>
@@ -95,7 +95,7 @@ export const PostManagement = () => {
             <p className="text-sm text-gray-600">Total Reports</p>
           </CardContent>
         </Card>
-      </div>
+      </div> */}
 
       <Card>
         <CardHeader>

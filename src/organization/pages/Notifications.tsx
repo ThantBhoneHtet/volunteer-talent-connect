@@ -44,16 +44,6 @@ const Notifications = () => {
     },
     {
       id: 3,
-      type: "deadline",
-      title: "Deadline approaching",
-      message: "Website Development project deadline is in 3 days",
-      time: "1 hour ago",
-      read: true,
-      icon: Clock,
-      color: "text-orange-500"
-    },
-    {
-      id: 4,
       type: "completed",
       title: "Task completed",
       message: "Graphics Design project has been marked as completed",
@@ -63,7 +53,7 @@ const Notifications = () => {
       color: "text-green-600"
     },
     {
-      id: 5,
+      id: 4,
       type: "application",
       title: "Application withdrawn",
       message: "Alex Rodriguez withdrew their application for Content Writing",
@@ -73,7 +63,7 @@ const Notifications = () => {
       color: "text-red-500"
     },
     {
-      id: 6,
+      id: 5,
       type: "post",
       title: "Post updated",
       message: "Your Social Media Management post has been published",
@@ -83,7 +73,7 @@ const Notifications = () => {
       color: "text-purple-500"
     },
     {
-      id: 7,
+      id: 6,
       type: "message",
       title: "New message received",
       message: "Emma Davis asked a question about project requirements",
@@ -93,7 +83,7 @@ const Notifications = () => {
       color: "text-green-500"
     },
     {
-      id: 8,
+      id: 7,
       type: "application",
       title: "New volunteer application",
       message: "John Smith applied for Photography project",
@@ -133,7 +123,7 @@ const Notifications = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <Card className="card-gradient hover-lift animate-scale-in">
+        <Card className="card-gradient hover:shadow-lg transition-shadow">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -145,7 +135,7 @@ const Notifications = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-gradient hover-lift animate-scale-in" style={{ animationDelay: "0.1s" }}>
+        <Card className="card-gradient hover:shadow-lg transition-shadow" style={{ animationDelay: "0.1s" }}>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -157,7 +147,7 @@ const Notifications = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-gradient hover-lift animate-scale-in" style={{ animationDelay: "0.2s" }}>
+        <Card className="card-gradient hover:shadow-lg transition-shadow" style={{ animationDelay: "0.2s" }}>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -171,7 +161,7 @@ const Notifications = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-gradient hover-lift animate-scale-in" style={{ animationDelay: "0.3s" }}>
+        <Card className="card-gradient hover:shadow-lg transition-shadow" style={{ animationDelay: "0.3s" }}>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -201,12 +191,11 @@ const Notifications = () => {
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-5">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="all">All</TabsTrigger>
               <TabsTrigger value="unread">Unread</TabsTrigger>
               <TabsTrigger value="application">Applications</TabsTrigger>
               <TabsTrigger value="message">Messages</TabsTrigger>
-              <TabsTrigger value="deadline">Deadlines</TabsTrigger>
             </TabsList>
 
             <TabsContent value={activeTab} className="mt-6">
