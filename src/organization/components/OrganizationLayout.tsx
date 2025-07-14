@@ -5,7 +5,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { Outlet } from "react-router-dom";
 
-//just testing
+
 
 interface LayoutProps {
   children: React.ReactNode;
