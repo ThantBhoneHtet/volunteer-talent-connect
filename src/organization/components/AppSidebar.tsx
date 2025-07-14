@@ -1,10 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { 
-  LayoutDashboard, 
-  Plus, 
-  FileText, 
-  Bell, 
-  MessageSquare, 
+import {
+  LayoutDashboard,
+  Plus,
+  FileText,
+  Bell,
+  MessageSquare,
   Settings,
   Users
 } from "lucide-react";
@@ -34,9 +34,8 @@ export function AppSidebar() {
   const location = useLocation();
   const isCollapsed = state === "collapsed";
 
-  const isActive = (path: string) => {
-    if (path === "/") return location.pathname === "/";
-    return location.pathname.startsWith(path);
+  const isActive = (itemUrl: string) => {
+    return location.pathname === itemUrl || location.pathname.startsWith(itemUrl + "/");
   };
 
   return (
@@ -63,30 +62,33 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-2">
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    className={`transition-all duration-200 hover:bg-slate-700 ${
-                      isActive(item.url)
-                        ? "bg-primary text-primary-foreground"
-                        : "text-sidebar"
-                    }`}
-                  >
-                    <NavLink
-                      to={item.url}
-                      className="flex items-center gap-3 px-3 py-2 rounded-lg"
+              {menuItems.map((item) => {
+                const active = isActive(item.url);
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      className={`transition-all duration-200 hover:bg-slate-700 ${
+                        active
+                          ? "bg-primary text-primary-foreground"
+                          : "text-sidebar"
+                      }`}
                     >
-                      <item.icon className="w-5 h-5" />
-                      {!isCollapsed && (
-                        <span className="animate-fade-in font-medium">
-                          {item.title}
-                        </span>
-                      )}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+                      <NavLink
+                        to={item.url}
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg"
+                      >
+                        <item.icon className="w-5 h-5" />
+                        {!isCollapsed && (
+                          <span className="animate-fade-in font-medium">
+                            {item.title}
+                          </span>
+                        )}
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
