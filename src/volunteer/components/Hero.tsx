@@ -1,78 +1,203 @@
-
 import { Button } from "@/shared/components/ui/button";
-import heroImg from "@/assets/Volunteering-amico.svg";
-import { ArrowRight, Users, Star, Award } from "lucide-react";
+import { ArrowRight, Users, Heart } from "lucide-react";
+import heroImage from "@/assets/hero-volunteers.jpg";
+import { motion, Variants } from "framer-motion";
 
-export const Hero = () => {
+const Hero = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Connect Your Skills
-              <span className="text-blue-600 block">With Meaningful Causes</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
-              Join thousands of skilled volunteers making a difference. Share your expertise, 
-              learn new skills, and contribute to organizations that matter to you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                size="lg" 
-                className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 group"
+    <section className="relative bg-gradient-to-br from-background to-secondary py-20 lg:py-32">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-12 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Content */}
+          <div className="space-y-8">
+            <motion.div className="space-y-4" variants={itemVariants}>
+              <motion.h1 
+                className="text-4xl lg:text-6xl font-bold text-foreground leading-tight"
+                variants={itemVariants}
               >
-                Get Started as Volunteer
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 text-lg px-8 py-4"
+                Connect Skills with
+                <motion.span 
+                  className="text-primary block"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                >
+                  Purpose
+                </motion.span>
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-muted-foreground leading-relaxed"
+                variants={itemVariants}
               >
-                Find Volunteers
-              </Button>
-            </div>
-          </div>
-          
-          <div className="relative">
-            <div className="relative overflow-hidden">
-              <img 
-                src={heroImg}
-                alt="Volunteers working together on community projects"
-                className="w-full h-[500px]"
-              />
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div> */}
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-blue-100 rounded-full opacity-60"></div>
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-green-100 rounded-full opacity-60"></div>
-          </div>
-        </div>
+                Join thousands of volunteers sharing their skills to make a difference. 
+                Whether you're looking to volunteer or need skilled help for your cause, 
+                we connect passion with purpose.
+              </motion.p>
+            </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="text-center p-6 rounded-xl bg-white/60 backdrop-blur-sm border border-blue-100 hover:shadow-lg transition-all duration-300">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="h-8 w-8 text-blue-600" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">15,000+</h3>
-            <p className="text-gray-600">Active Volunteers</p>
+            {/* Stats */}
+            <motion.div 
+              className="flex items-center space-x-8"
+              variants={itemVariants}
+            >
+              <motion.div 
+                className="flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Users className="w-5 h-5 text-primary" />
+                <div>
+                  <motion.div 
+                    className="font-semibold text-foreground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                  >
+                    5,000+
+                  </motion.div>
+                  <div className="text-sm text-muted-foreground">Volunteers</div>
+                </div>
+              </motion.div>
+              <motion.div 
+                className="flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Heart className="w-5 h-5 text-primary" />
+                <div>
+                  <motion.div 
+                    className="font-semibold text-foreground"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.4, duration: 0.6 }}
+                  >
+                    1,200+
+                  </motion.div>
+                  <div className="text-sm text-muted-foreground">Projects Completed</div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              variants={itemVariants}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Button variant="hero" className="group">
+                  Start Volunteering
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Button variant="outline" size="lg">
+                  Find Volunteers
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div 
+              className="pt-8"
+              variants={itemVariants}
+            >
+              <p className="text-sm text-muted-foreground mb-4">Trusted by organizations like:</p>
+              <motion.div 
+                className="flex items-center space-x-6 opacity-60"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 0.6, x: 0 }}
+                transition={{ delay: 1.6, duration: 0.6 }}
+              >
+                <div className="px-4 py-2 bg-muted rounded text-sm font-medium">Red Cross</div>
+                <div className="px-4 py-2 bg-muted rounded text-sm font-medium">Habitat</div>
+                <div className="px-4 py-2 bg-muted rounded text-sm font-medium">Local Food Bank</div>
+              </motion.div>
+            </motion.div>
           </div>
-          <div className="text-center p-6 rounded-xl bg-white/60 backdrop-blur-sm border border-green-100 hover:shadow-lg transition-all duration-300">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Star className="h-8 w-8 text-green-600" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">500+</h3>
-            <p className="text-gray-600">Partner Organizations</p>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-white/60 backdrop-blur-sm border border-purple-100 hover:shadow-lg transition-all duration-300">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Award className="h-8 w-8 text-purple-600" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">1M+</h3>
-            <p className="text-gray-600">Hours Contributed</p>
-          </div>
-        </div>
+
+          {/* Hero Image */}
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <motion.div 
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img 
+                src={heroImage} 
+                alt="Volunteers working together in community"
+                className="w-full h-[400px] lg:h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </motion.div>
+            
+            {/* Floating card */}
+            <motion.div 
+              className="absolute -bottom-6 -left-6 bg-card p-6 rounded-xl shadow-xl border"
+              initial={{ opacity: 0, y: 20, rotate: -5 }}
+              animate={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{ delay: 1.0, duration: 0.6, type: "spring" }}
+              whileHover={{ rotate: 2, scale: 1.05 }}
+            >
+              <div className="flex items-center space-x-3">
+                <motion.div 
+                  className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                >
+                  <Heart className="w-6 h-6 text-primary" />
+                </motion.div>
+                <div>
+                  <div className="font-semibold text-card-foreground">Make an Impact</div>
+                  <div className="text-sm text-muted-foreground">Every skill matters</div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
 };
+
+export default Hero;

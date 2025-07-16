@@ -23,6 +23,8 @@ import Login from "@/volunteer/pages/Login";
 import VolunteerDashboard from "@/volunteer/pages/VolunteerDashboard";
 import VolunteerNotFound from "@/volunteer/pages/NotFound";
 import Admin from "@/volunteer/pages/Admin";
+import ViewAllPosts from "@/volunteer/pages/ViewAllPost";
+import PostDetail from "@/volunteer/pages/PostDetail";
 
 // ----- Organization -----
 import { OrganizationLayout } from "@/organization/components/OrganizationLayout";
@@ -89,6 +91,8 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/admin-panel" element={<Admin />} />
           <Route path="/volunteer/dashboard" element={<VolunteerDashboard />} />
+          <Route path="/volunteer/pages/ViewAllPost" element={<ViewAllPosts/>} />
+          <Route path="/volunteer/pages/PostDetail" element={<PostDetail />} />
 
           {/* ----- Organizaion ----- */}
           <Route path="/organization" element={<OrganizationLayout />}>
